@@ -28,3 +28,21 @@ configuration.store.path=/config-server/appconfig
 config.server.uri=http://configserver-v3-svc:1010/config/v3/app-configs
 config.server.uri.v2=http://configserver-svc:1010/config/v2/app-configs
 cms.url=http://drupal-svc
+...
+
+```
+#Remove all unnecessary
+It also remove all unnecessary thing which are not required for local such as javaoptions-configs.
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: javaoptions-configs
+    namespace: live
+data:
+  config_server_java_opts: "-server -Xms2048m -Xmx2048m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError"
+  bazaarvoice_java_opts: "-server -Xms2048m -Xmx2048m -XX:+UseG1GC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp"
+
+```
+
